@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Главная
+{% endblock %}
+
+{% block link_css %}
+	<link rel="stylesheet" type="text/css" href="static/main/css/MainPage.css">
+{% endblock %}
+
+{% block content %}
+	<body>
+		<main class="page">
+			<div class="main_page" id="main_page">
+				<div class="subtitle">
+					<p>Заказ десертов онлайн</p>
+				</div>			
+				<img name="slideshow">
+			</div>
+			<div class="menu_page" id="menu_page">
+				<div class="subtitle">
+					<p>Меню</p>
+				</div>
+				<div class="products">
+					<a href="{% url 'product' %}" class="product">
+						<div>
+							<div class="product_photo">
+								<img class="photo" src="static/main/images/main/3.jpg">
+							</div>
+							<p class="name">Пирожные</p>
+						</div>
+					</a>
+					<a href="{% url 'product' %}" class="product">
+						<div>
+							<div class="product_photo">
+								<img class="photo" src="static/main/images/main/4.jpg">
+							</div>
+							<p class="name">Торты</p>
+						</div>
+					</a>
+					<a href="{% url 'product' %}" class="product">
+						<div>
+							<div class="product_photo">
+								<img class="photo" src="/static/main/images/main/1.jpg">
+							</div>
+							<p class="name">Макаруны</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="contacts_page" id="contacts_page">
+				<div class="subtitle">
+					<p>Контакты</p>
+				</div>
+				<div class="about">
+					<p>
+						Челябинск, ул. Пустового, 3а
+						Время работы: с 11:00 до 21:00
+						Телефон: +7 (951) 465-07-83
+					</p>
+					<div class="connects">
+						<a href="https://www.instagram.com/konditer.lazareva/?hl=ru" class="connect"><i class="fa fa-instagram"></i></a>
+						<a href="https://vk.com/bogatyreva_veronika" class="connect"><i class="fa fa-vk"></i></a>
+					</div>
+				</div>
+				<div id="map">
+					<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afc6b0c6e571f2156ad52ed7e0184ea93b7227fa42194954d3a325cdbd7a58f1d&amp;width=544&amp;height=380&amp;lang=ru_RU&amp;scroll=true"></script>
+				</div>
+			</div>
+		</main>
+{% endblock %}
+
+{% block link_js %}
+	<script type="text/javascript" src="static/main/js/MainPage.js"></script>
+{% endblock %}

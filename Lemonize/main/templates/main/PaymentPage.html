@@ -1,0 +1,91 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block link_css %}
+	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css">
+{% endblock %}
+
+{% block content %}
+<body>
+	<main>
+		<div class="subtitle">
+			<p>Корзина</p>
+		</div>
+		<div class="table">
+			<table class="cart">
+				<thead>
+	                <tr>
+	                    <td>Товар</td>
+	                    <td>Цена</td>
+	                    <td>Количество</td>
+	                    <td>Итого</td>
+	                    <td></td>
+	                </tr>
+            	</thead>
+            	<tbody>
+            		<tr class="product">
+            			<td>
+            				<div class="photo_and_name">
+            					<div class="photo">
+            					<img src="" alt="">
+            					</div>
+            					<p class="name">Название</p>
+            				</div>
+            			</td>
+            			<td>
+            				<p class="price">Цена ₽</p>
+            			</td>
+            			<td>
+            				<p class="count">
+            					<input type="number" name="count" min="1" max="10" value="1">
+            				</p>
+            			</td>
+            			<td>
+            				<p class="total">Цена ₽</p>
+            			</td>
+            			<td>
+            				<button class="delete">X</button>
+            			</td>	
+            		</tr>
+            	</tbody>
+			</table>
+		</div>
+		<div class="payment">
+			<div class="subtitle">
+				<p>Оформление заказа</p>
+			</div>
+			<div class="input_data">
+				<div class="name_and_phone">
+					<p class="input_text">
+					<input type="text" name="name" placeholder="Фамилия и имя" id="name_and_phone">
+					</p>
+					<p class="input_text">
+						<input type="tel" name="phone" maxlength="11" placeholder="Телефон" id="name_and_phone">
+					</p>
+				</div>
+				<div class="delivery">
+					<div class="button">
+						<p><input type="radio" name="delivery" id="delivery">Доставка</p>
+					</div>
+					<div class="button">
+						<p><input type="radio" name="delivery" id="pickup">Самовывоз</p>
+					</div>	
+				</div>
+			</div>
+			<div class="total">
+				<p>Итого</p>
+				<p>Цена ₽</p>
+			</div>
+			<div class="payment_button">
+				<button class="button">Оформить заказ</button>
+			</div>
+		</div>
+	</main>
+{% endblock %}
+
+{% block link_js %}
+	<script type="text/javascript" src="static/main/js/PaymentPage.js"></script>
+{% endblock %}
