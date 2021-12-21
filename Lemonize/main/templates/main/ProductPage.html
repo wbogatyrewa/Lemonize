@@ -1,95 +1,34 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-Десерты
+{{ title }}
 {% endblock %}
 
 {% block link_css %}
-	<link rel="stylesheet" type="text/css" href="static/main/css/ProductPage.css">
+	<link rel="stylesheet" type="text/css" href="static/main/css/ProductPage.css?v=4">
 {% endblock %}
 
 {% block content %}
 <body>
 	<main>
 		<div class="subtitle">
-			<p>Товар</p>
+			<p>{{ title }}</p>
 		</div>
-		<div class="products">
-			<div class="product">
-				<div class="photo">
-					<img src="" alt="">
-				</div>
-				<div class="about">
-					<p class="name">Название</p>
-					<p class="price">Цена ₽</p>
-					<div class="button">
-						<p>В корзину</p>
+			<div class="products">
+				{% for el in products %}
+					<div class="product">
+						<div class="photo">
+							<img src="{{el.image}}" alt="">
+						</div>
+						<div class="about">
+							<p class="name">{{el.title}}</p>
+							<p class="price">{{el.price}} ₽</p>
+							<div class="button"><p>В корзину</p>
+							</div>
+						</div>
 					</div>
-				</div>
+				{% endfor %}
 			</div>
-			<div class="product">
-				<div class="photo">
-					<img src="" alt="">
-				</div>
-				<div class="about">
-					<p class="name">Название</p>
-					<p class="price">Цена ₽</p>
-					<div class="button">
-						<p>В корзину</p>
-					</div>
-				</div>
-			</div>
-			<div class="product">
-				<div class="photo">
-					<img src="" alt="">
-				</div>
-				<div class="about">
-					<p class="name">Название</p>
-					<p class="price">Цена ₽</p>
-					<div class="button">
-						<p>В корзину</p>
-					</div>
-				</div>
-			</div>
-			<div class="product">
-				<div class="photo">
-					<img src="" alt="">
-				</div>
-				<div class="about">
-					<p class="name">Название</p>
-					<p class="price">Цена ₽</p>
-					<div class="button">
-						<p>В корзину</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="products">
-			<div class="product">
-				<div class="photo">
-					<img src="" alt="">
-				</div>
-				<div class="about">
-					<p class="name">Название</p>
-					<p class="price">Цена ₽</p>
-					<div class="button">
-						<p>В корзину</p>
-					</div>
-				</div>
-			</div>
-			<div class="product">
-				<div class="photo">
-					<img src="" alt="">
-				</div>
-				<div class="about">
-					<p class="name">Название</p>
-					<p class="price">Цена ₽</p>
-					<div class="button">
-						<p>В корзину</p>
-					</div>
-				</div>
-			</div>
-		</div>
 	</main>
 {% endblock %}
 

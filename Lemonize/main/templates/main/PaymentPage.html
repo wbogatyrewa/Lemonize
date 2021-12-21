@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block link_css %}
-	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css">
+	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=7">
 {% endblock %}
 
 {% block content %}
@@ -47,7 +47,7 @@
             				<p class="total">Цена ₽</p>
             			</td>
             			<td>
-            				<button class="delete">X</button>
+            				<div class="delete">X</div>
             			</td>	
             		</tr>
             	</tbody>
@@ -76,11 +76,10 @@
 				</div>
 			</div>
 			<div class="total">
-				<p>Итого</p>
+				<p>Итого</p>	
 				<p>Цена ₽</p>
 			</div>
-			<div class="payment_button">
-				<button class="button">Оформить заказ</button>
+			<div class="payment_button">Оформить заказ
 			</div>
 		</div>
 	</main>

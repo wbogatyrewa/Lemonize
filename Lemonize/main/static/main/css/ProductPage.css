@@ -103,7 +103,7 @@ main{
 	width: 200px;
 	height: 68px;
 	left: 50%;
-	margin-left: -70px;
+	margin-left: -100px;
 	margin-top: 37px;
 	margin-bottom: 37px;
 	font-style: normal;
@@ -118,9 +118,11 @@ main{
 .products{
 	position: relative;
 	width: 1035px;
-	height: 346px;
-	display: flex;
 	margin-bottom: 30px;
+	display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
 }
 .product{
 	position: relative;
@@ -134,6 +136,10 @@ main{
 	height: 228px;
 	background: gray;
 }
+.photo img{
+	width: 240px;
+	height: 228px;
+}
 .about{
 	position: relative;
 	width: 240px;
@@ -141,7 +147,7 @@ main{
 	top: 6px;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 35px;
 	align-items: center;
 	text-align: center;
