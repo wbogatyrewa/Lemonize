@@ -1,21 +1,21 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-Корзина
+{{ title }}
 {% endblock %}
 
 {% block link_css %}
-	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=7">
+	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=19">
 {% endblock %}
 
 {% block content %}
 <body>
 	<main>
 		<div class="subtitle">
-			<p>Корзина</p>
+			<p>{{ title }}</p>
 		</div>
 		<div class="table">
-			<table class="cart">
+			<table class="cart" cellspacing="0">
 				<thead>
 	                <tr>
 	                    <td>Товар</td>
@@ -26,30 +26,32 @@
 	                </tr>
             	</thead>
             	<tbody>
+            		{% for el in basket %}
             		<tr class="product">
             			<td>
             				<div class="photo_and_name">
             					<div class="photo">
-            					<img src="" alt="">
+            					<img src="{{ el.product_id.image }}" alt="">
             					</div>
-            					<p class="name">Название</p>
+            					<p class="name">{{ el.product_id.title }}</p>
             				</div>
             			</td>
             			<td>
-            				<p class="price">Цена ₽</p>
+            				<p class="price" id="price">{{ el.product_id.price }} ₽</p>
             			</td>
             			<td>
             				<p class="count">
-            					<input type="number" name="count" min="1" max="10" value="1">
+            					<input type="number" id="count" name="count" min="1" max="10" value="{{ el.count }}" oninput="mult()">
             				</p>
             			</td>
             			<td>
-            				<p class="total">Цена ₽</p>
+            				<p class="total" id="total">{{ el.product_id.price }} ₽</p>
             			</td>
             			<td>
-            				<div class="delete">X</div>
+            				<button class="delete">X</button>
             			</td>	
             		</tr>
+            		{% endfor %}
             	</tbody>
 			</table>
 		</div>
@@ -79,12 +81,12 @@
 				<p>Итого</p>	
 				<p>Цена ₽</p>
 			</div>
-			<div class="payment_button">Оформить заказ
-			</div>
+			<button class="payment_button">Оформить заказ
+			</button>
 		</div>
 	</main>
 {% endblock %}
 
 {% block link_js %}
-	<script type="text/javascript" src="static/main/js/PaymentPage.js"></script>
+	<script type="text/javascript" src="static/main/js/PaymentPage.js?v=3"></script>
 {% endblock %}

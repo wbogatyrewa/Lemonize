@@ -157,10 +157,7 @@ main{
 	position: relative;
 	width: 157px;
 	height: 42px;
-	cursor: pointer;
 	background: #D3C7B6;
-	left: 50%;
-	margin-left: -79px;
 }
 footer{
 	height: 77px;
