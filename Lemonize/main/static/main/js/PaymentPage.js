@@ -8,11 +8,20 @@ menu.onclick = function ShowMenu() {
 	}
 }
 
-function mult() {
-	var price_str = document.getElementById('price').innerHTML;
-	var price = price_str.split(' ')[0];
-	var count = document.getElementById('count').value;
-
-	var mult = parseInt(price) * count;
-	document.getElementById('total').innerHTML = mult + ' ₽';
+function Sum() {
+	let table = document.querySelector('#cart');
+	
+	var sum = 0;
+	for (let row of table.rows) {
+		if (row.querySelector('#price') != null &&
+			row.querySelector('#count') != null) {
+		    var price_str = row.querySelector('#price').innerHTML;
+			console.log(price_str);
+		    var price = parseInt(price_str.split(' ')[0]);
+			var count = row.querySelector('#count').value;
+			sum += price * count;
+		}
+	}
+	document.getElementById('total_sum').value = sum + ' ₽';
 }
+window.onload = Sum;

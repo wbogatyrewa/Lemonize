@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block link_css %}
-	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=19">
+	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=24">
 {% endblock %}
 
 {% block content %}
@@ -14,14 +14,15 @@
 		<div class="subtitle">
 			<p>{{ title }}</p>
 		</div>
+		<form method="post">
+		{% csrf_token %}
 		<div class="table">
-			<table class="cart" cellspacing="0">
+			<table class="cart" cellspacing="0" id="cart">
 				<thead>
 	                <tr>
 	                    <td>Товар</td>
 	                    <td>Цена</td>
 	                    <td>Количество</td>
-	                    <td>Итого</td>
 	                    <td></td>
 	                </tr>
             	</thead>
@@ -41,14 +42,15 @@
             			</td>
             			<td>
             				<p class="count">
-            					<input type="number" id="count" name="count" min="1" max="10" value="{{ el.count }}" oninput="mult()">
+            					<input type="number" id="count" name="count" min="1" max="10" value="{{ el.count }}" oninput="Sum()">
             				</p>
             			</td>
             			<td>
-            				<p class="total" id="total">{{ el.product_id.price }} ₽</p>
-            			</td>
-            			<td>
-            				<button class="delete">X</button>
+            				<form method="post">
+								{% csrf_token %}
+								<input type="hidden" value="{{ el.id }}" name="id">
+            					<button type="submit" class="delete" name="product_delete">X</button>
+            				</form>
             			</td>	
             		</tr>
             		{% endfor %}
@@ -59,31 +61,31 @@
 			<div class="subtitle">
 				<p>Оформление заказа</p>
 			</div>
-			<div class="input_data">
-				<div class="name_and_phone">
-					<p class="input_text">
-					<input type="text" name="name" placeholder="Фамилия и имя" id="name_and_phone">
-					</p>
-					<p class="input_text">
-						<input type="tel" name="phone" maxlength="11" placeholder="Телефон" id="name_and_phone">
-					</p>
-				</div>
-				<div class="delivery">
-					<div class="button">
-						<p><input type="radio" name="delivery" id="delivery">Доставка</p>
+			
+				<div class="input_data">
+					<div class="name_and_phone">
+						
+						<input type="text" name="name" placeholder="Фамилия и имя" id="name_and_phone" class="input_text">
+						
+						<input type="tel" name="phone" maxlength="11" placeholder="Телефон" id="name_and_phone" class="input_text">
+						
 					</div>
-					<div class="button">
-						<p><input type="radio" name="delivery" id="pickup">Самовывоз</p>
-					</div>	
+					<div class="delivery">
+						<div class="button">
+							<p><input type="radio" name="delivery" id="delivery" value="Доставка">Доставка</p>
+						</div>
+						<div class="button">
+							<p><input type="radio" name="delivery" id="pickup" value="Самовывоз">Самовывоз</p>
+						</div>	
+					</div>
 				</div>
-			</div>
-			<div class="total">
-				<p>Итого</p>	
-				<p>Цена ₽</p>
-			</div>
-			<button class="payment_button">Оформить заказ
-			</button>
-		</div>
+				<div class="total">
+					<p>Итого</p>	
+					<input type="text" name="total_sum" id="total_sum" value="0 ₽" readonly>
+				</div>
+				<button type="submit" class="payment_button" name="order">Оформить заказ
+				</button>
+			</form>
 	</main>
 {% endblock %}
 

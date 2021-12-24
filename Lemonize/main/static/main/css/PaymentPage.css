@@ -274,7 +274,6 @@ td{
 .payment .total{
 	position: relative;
 	top: 33px;
-	left: ;
 	display: flex;
 	font-style: normal;
 	font-weight: normal;
@@ -283,9 +282,17 @@ td{
 	display: flex;
 	align-items: center;
 	text-align: center;
+	
 }
 .payment .total p{
 	margin-left: 14%;
+}
+#total_sum{
+	font-family: 'Kurale';
+    text-align: right;
+    border: none;
+    font-size: 24px;
+    color: #332F29;
 }
 .payment_button{
 	display: flex;
