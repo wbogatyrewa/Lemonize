@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from .models import Product, Basket, Order
 import logging
+
+
 logger = logging.getLogger(__name__)
+
 
 def MainPage(request):
     return render(request, 'main/MainPage.html')
@@ -10,27 +13,28 @@ def MainPage(request):
 def ProductPagePastries(request):
     title = 'Пирожные'
     products = Product.objects.filter(type=title)
-    load(request)
+    to_basket(request)
     return render(request, 'main/ProductPage.html', {'title': title, 'products': products})
 
 
 def ProductPageCakes(request):
     title = 'Торты'
     products = Product.objects.filter(type=title)
-    load(request)
+    to_basket(request)
     return render(request, 'main/ProductPage.html', {'title': title, 'products': products})
 
 
 def ProductPageMacaroons(request):
     title = 'Макаруны'
     products = Product.objects.filter(type=title)
-    load(request)
+    to_basket(request)
     return render(request, 'main/ProductPage.html', {'title': title, 'products': products})
 
 
 def PaymentPage(request):
     title = 'Корзина'
     basket = Basket.objects.all()
+
     if request.method == 'POST':
         if 'product_delete' in request.POST:
             product = Basket.objects.get(pk=request.POST['id'])  # получение продукта по id
@@ -46,13 +50,14 @@ def PaymentPage(request):
 
             order.save()
             products = Basket.objects.all()
+
             for p in products:
                 order.basket.add(p)
 
     return render(request, 'main/PaymentPage.html', {'title': title, 'basket': basket})
 
 
-def load(request):
+def to_basket(request):
     if request.method == 'POST':
         basket = Basket.objects.all()
         product = Product.objects.get(pk=request.POST['product_id'])

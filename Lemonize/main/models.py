@@ -14,7 +14,6 @@ class Product(models.Model):
         return self.title == other.title
 
 
-
 class Basket(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     count = models.IntegerField('Количество', default=1)

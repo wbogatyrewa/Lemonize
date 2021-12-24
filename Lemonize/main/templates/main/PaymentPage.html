@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block link_css %}
-	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=24">
+	<link rel="stylesheet" type="text/css" href="static/main/css/PaymentPage.css?v=27">
 {% endblock %}
 
 {% block content %}
@@ -14,8 +14,6 @@
 		<div class="subtitle">
 			<p>{{ title }}</p>
 		</div>
-		<form method="post">
-		{% csrf_token %}
 		<div class="table">
 			<table class="cart" cellspacing="0" id="cart">
 				<thead>
@@ -41,9 +39,8 @@
             				<p class="price" id="price">{{ el.product_id.price }} ₽</p>
             			</td>
             			<td>
-            				<p class="count">
-            					<input type="number" id="count" name="count" min="1" max="10" value="{{ el.count }}" oninput="Sum()">
-            				</p>
+            				<p class="count" id="count" name="count">{{ el.count }}
+            				</p>        				
             			</td>
             			<td>
             				<form method="post">
@@ -61,18 +58,19 @@
 			<div class="subtitle">
 				<p>Оформление заказа</p>
 			</div>
-			
+			<form method="post">
+			{% csrf_token %}
 				<div class="input_data">
 					<div class="name_and_phone">
 						
-						<input type="text" name="name" placeholder="Фамилия и имя" id="name_and_phone" class="input_text">
+						<input type="text" name="name" placeholder="Фамилия и имя" id="name_and_phone" class="input_text" required>
 						
-						<input type="tel" name="phone" maxlength="11" placeholder="Телефон" id="name_and_phone" class="input_text">
+						<input type="tel" name="phone" maxlength="11" placeholder="Телефон" id="name_and_phone" class="input_text" required>
 						
 					</div>
 					<div class="delivery">
 						<div class="button">
-							<p><input type="radio" name="delivery" id="delivery" value="Доставка">Доставка</p>
+							<p><input type="radio" name="delivery" id="delivery" value="Доставка" required>Доставка</p>
 						</div>
 						<div class="button">
 							<p><input type="radio" name="delivery" id="pickup" value="Самовывоз">Самовывоз</p>
@@ -90,5 +88,5 @@
 {% endblock %}
 
 {% block link_js %}
-	<script type="text/javascript" src="static/main/js/PaymentPage.js?v=3"></script>
+	<script type="text/javascript" src="static/main/js/PaymentPage.js?v=4"></script>
 {% endblock %}

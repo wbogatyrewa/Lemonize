@@ -16,9 +16,9 @@ function Sum() {
 		if (row.querySelector('#price') != null &&
 			row.querySelector('#count') != null) {
 		    var price_str = row.querySelector('#price').innerHTML;
-			console.log(price_str);
+			
 		    var price = parseInt(price_str.split(' ')[0]);
-			var count = row.querySelector('#count').value;
+			var count = parseInt(row.querySelector('#count').innerHTML);
 			sum += price * count;
 		}
 	}
